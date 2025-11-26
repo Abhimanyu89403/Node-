@@ -33,8 +33,8 @@ resource "aws_ecs_task_definition" "nodetaskDef" {
                 awslog-group = aws_cloudwatch_log_group.nodeloggroup.name
                 awslog-region = "ap-south-1"
                 aws-log-prefix = "app"
-                }
             }          
+        }
         }
     ])
 }
