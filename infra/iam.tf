@@ -23,7 +23,7 @@ resource "aws_iam_role_policy_attachment" "execution_attachment" {
 resource "aws_iam_role" "task_role" {
     name = "${var.project_name}-task_role"
     
-    assume_role_policy = jsonencode {
+    assume_role_policy = jsonencode ({
         Version = "2012-10-17"
         Statement = [{
             Effect = "Allow"
@@ -32,7 +32,7 @@ resource "aws_iam_role" "task_role" {
             },
             Action = "sts:Assumerole"
         }]
-    }
+    })
 }
 resource "aws_iam_policy" "s3_read_write_policy" {
     name = "${var.project_name}-s3-policy"
