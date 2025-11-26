@@ -17,10 +17,27 @@ resource "aws_s3_bucket_versioning" "versioning" {
     }
 }
 
+resource "aws_s3_bucket_lifecycyle_policy" "bucket_policy" {
+    bucket = "${var.project_name}-bucket-policy"
+
+    rule {
+        id = "intelligent-tiering"
+        status = "Enabled"
+    }
+   transition {
+        days = 0
+        storage_class = "INTELLIGENT_TIERING"
+    }
+    noncurrent_version_expiration {
+        days = 30
+        storage_class = "GLACIER_INSTANT"
+    }
+}
+
 resource "aws_server_side_encryption" "at_rest_encryption" {
     bucket = aws_s3_bucket.my_bucket.id
     rule {
-        server_side_encryption {
+        apply_server_side_encryption_by_default {
             sse_algorithm = "AES-256"
         }
     }
