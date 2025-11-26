@@ -17,6 +17,7 @@ resource "aws_ecs_task_definition" "nodetaskDef" {
     cpu = 1024
     memory = 1024
     execution_role_arn = aws_iam_role.task_role.arn
+    task_role_arn = aws_iam_role.execution_role.arn
 
     container_definitions = jsonencode ([
         {
@@ -38,7 +39,6 @@ resource "aws_ecs_task_definition" "nodetaskDef" {
         }
     ])
 }
-
 resource "aws_ecs_service" "nodeserv" {
     name = "${var.project_name}-service"
     cluster = aws_ecs_cluster.nodeCluster.name
