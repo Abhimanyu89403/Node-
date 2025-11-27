@@ -1,0 +1,37 @@
+name : Pipeline for node- project
+
+on:
+  push:
+   branches:
+    - master
+
+jobs:
+  deploy:
+    runs_on: ubuntu_latest
+
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-region: ${{ env.AWS_REGION }}
+        aws-access_key_id: ${{ env.ACCESS_KEY }}
+        aws-secret-access-key_id: ${{ env.SECRET_ACCESS_KEY }}
+
+    - name: Setup terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: initialize terraform repository
+      run: terraform init
+
+    - name: validate of terraform code is correct
+      run: terraform validate
+
+    - name: create a terraform state file and see what the infra would look like
+      run: terraform plan
+
+    - name: create the infra
+      run: terraform apply -auto-approve
