@@ -25,13 +25,17 @@ jobs:
       uses: hashicorp/setup-terraform@v2
 
     - name: initialize terraform repository
+      working-directory: ./infra
       run: terraform init
 
     - name: validate of terraform code is correct
+      working-directory: ./infra
       run: terraform validate
 
     - name: create a terraform state file and see what the infra would look like
+      working-directory: ./infra
       run: terraform plan
 
     - name: create the infra
+      working-directory: ./infra
       run: terraform apply -auto-approve
