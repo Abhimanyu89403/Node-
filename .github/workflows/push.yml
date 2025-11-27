@@ -14,11 +14,11 @@ on:
           uses: actions/checkout@v4
 
         - name: configure aws credentials
-          uses: aws-actions/configure-aws-credentials@v4
+          uses: aws-actions/configure-aws-credentials@v4W
           with:
             aws-region: ${{ secrets.AWS_REGION }}
-            aws-access_key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key-id: ${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key-id: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
         - name: build docker image
           run:  docker build -t node-:latest
