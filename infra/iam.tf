@@ -17,9 +17,6 @@ resource "aws_iam_role_policy_attachment" "execution_attachment" {
     policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
-
-
-
 resource "aws_iam_role" "task_role" {
     name = "${var.project_name}-task_role"
     

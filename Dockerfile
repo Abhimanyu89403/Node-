@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY app/ .
 
-RUN npm install --production
+RUN npm install
 
 
 FROM node:18-alpine as RUNTIME
