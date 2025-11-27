@@ -13,11 +13,11 @@ resource "aws_s3_bucket_public_access_block" "public_access_block" {
 resource "aws_s3_bucket_versioning" "versioning" {
     bucket = aws_s3_bucket.my_bucket.id
     versioning_configuration {
-        status = "enabled"
+        status = "Enabled"
     }
 }
 
-resource "aws_s3_bucket_lifecycyle_policy" "bucket_policy" {
+resource "aws_s3_bucket_lifecyle_policy" "bucket_policy" {
     bucket = "${var.project_name}-bucket-policy"
 
     rule {
@@ -34,7 +34,7 @@ resource "aws_s3_bucket_lifecycyle_policy" "bucket_policy" {
     }
 }
 
-resource "aws_server_side_encryption" "at_rest_encryption" {
+resource "aws_server_side_encryption_configuration" "at_rest" {
     bucket = aws_s3_bucket.my_bucket.id
     rule {
         apply_server_side_encryption_by_default {

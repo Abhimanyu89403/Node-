@@ -45,7 +45,7 @@ resource "aws_iam_policy" "s3_read_write_policy" {
             ],
             Resource = [
                 "${aws_s3_bucket.my_bucket.arn}",
-                "${awws_s3_bucket.my_bucket.arn}/*"
+                "${aws_s3_bucket.my_bucket.arn}/*"
 
             ]
         }]

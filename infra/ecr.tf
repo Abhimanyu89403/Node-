@@ -5,11 +5,11 @@ resource "aws_ecr_repository" "noderepo" {
         scan_on_push = true
     }
     encryption_configuration {
-        encryption_type = "AES_256"
+        encryption_type = "AES256"
     }
 }
 
-resource "aws_ecr_lifecycyle_policy" "policy" {
+resource "aws_ecr_lifecyle_policy" "policy" {
     repository = aws_ecr_repository.noderepo.name
 
     policy = <<EOF
