@@ -17,7 +17,7 @@ resource "aws_s3_bucket_versioning" "versioning" {
     }
 }
 
-resource "aws_s3_bucket_lifecyle_policy" "bucket_policy" {
+resource "aws_s3_bucket_lifecycle_policy" "bucket_policy" {
     bucket = "${var.project_name}-bucket-policy"
 
     rule {
@@ -34,7 +34,7 @@ resource "aws_s3_bucket_lifecyle_policy" "bucket_policy" {
     }
 }
 
-resource "aws_server_side_encryption_configuration" "at_rest" {
+resource "aws_s3_bucket_server_side_encryption_configuration" "at_rest" {
     bucket = aws_s3_bucket.my_bucket.id
     rule {
         apply_server_side_encryption_by_default {

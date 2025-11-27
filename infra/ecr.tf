@@ -9,7 +9,7 @@ resource "aws_ecr_repository" "noderepo" {
     }
 }
 
-resource "aws_ecr_lifecyle_policy" "policy" {
+resource "aws_ecr_lifecycle_policy" "policy" {
     repository = aws_ecr_repository.noderepo.name
 
     policy = <<EOF
