@@ -12,7 +12,7 @@ resource "aws_cloudwatch_log_group" "nodeloggroup" {
 }
 resource "aws_ecs_task_definition" "nodetaskDef" {
     family = "${var.project_name}-nodetaskdef"
-    requires_compatibilities = "FARGATE"
+    requires_compatibilities = ["FARGATE"]
     network_mode = "awsvpc"
     cpu = 1024
     memory = 1024

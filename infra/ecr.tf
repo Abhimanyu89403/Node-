@@ -20,7 +20,7 @@ resource "aws_ecr_lifecycle_policy" "policy" {
         "description" : "Keep only 15 images and delete the rest"
         "selection" : {
             "tagStatus : "any"
-            "countType" : "imageCountMorethan"
+            "countType" : "imageCountMoreThan"
             "countNumber" : "15" 
         },
         "action" : {
